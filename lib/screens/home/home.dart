@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tp_calculate/config/palette.dart';
+import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
+import 'package:tp_calculate/providers/result_provider.dart';
 
 class HomeScreen extends HookWidget {
   @override
@@ -20,12 +23,15 @@ class HomeScreen extends HookWidget {
 // Molecules
 // ・有効性の確認
 // ・リクエスト等
-class CalculateForm extends StatelessWidget {
+class CalculateForm extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final valueTextFormatter = <TextInputFormatter>[
       FilteringTextInputFormatter.digitsOnly
     ];
+
+    final resultModel = ResultModel();
+    final result = useProvider(resultNotifierProvider);
 
     return Container(
       child: Column(
@@ -37,7 +43,9 @@ class CalculateForm extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(label: "PERFECT"),
+                  child: CalculateTextField(
+                    label: "PERFECT",
+                  ),
                 ),
               ),
               Expanded(
@@ -116,7 +124,9 @@ class CalculateForm extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: CalculateTextField(label: "PERFECT"),
+                  child: CalculateTextField(
+                    label: "PERFECT",
+                  ),
                 ),
               ),
               // 右の空白
@@ -137,9 +147,16 @@ class CalculateTextField extends StatelessWidget {
   final String label;
   final List<TextInputFormatter> inputFormatter;
   final Color labelColor;
+  final void Function(String) changed;
+  final bool isEnabled;
 
   const CalculateTextField(
-      {Key key, @required this.label, this.inputFormatter, this.labelColor})
+      {Key key,
+      @required this.label,
+      this.inputFormatter,
+      this.labelColor,
+      this.changed,
+      this.isEnabled})
       : super(key: key);
 
   @override
@@ -160,6 +177,8 @@ class CalculateTextField extends StatelessWidget {
               contentPadding: EdgeInsets.all(8),
               border: OutlineInputBorder(),
             ),
+            enabled: isEnabled,
+            onChanged: changed,
             keyboardType: TextInputType.number,
             inputFormatters: inputFormatter),
       ],

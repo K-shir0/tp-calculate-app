@@ -15,13 +15,13 @@ class _$ResultModelTearOff {
 
 // ignore: unused_element
   _Result call(
-      {String id,
-      Float tp,
-      int perfect,
-      int good,
-      int bad,
-      int miss,
-      int blackPerfect}) {
+      {@nullable String id,
+      @nullable Float tp,
+      @nullable int perfect,
+      @nullable int good,
+      @nullable int bad,
+      @nullable int miss,
+      @nullable int blackPerfect}) {
     return _Result(
       id: id,
       tp: tp,
@@ -40,12 +40,19 @@ const $ResultModel = _$ResultModelTearOff();
 
 /// @nodoc
 mixin _$ResultModel {
+  @nullable
   String get id;
+  @nullable
   Float get tp;
+  @nullable
   int get perfect;
+  @nullable
   int get good;
+  @nullable
   int get bad;
+  @nullable
   int get miss;
+  @nullable
   int get blackPerfect;
 
   $ResultModelCopyWith<ResultModel> get copyWith;
@@ -57,13 +64,13 @@ abstract class $ResultModelCopyWith<$Res> {
           ResultModel value, $Res Function(ResultModel) then) =
       _$ResultModelCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      Float tp,
-      int perfect,
-      int good,
-      int bad,
-      int miss,
-      int blackPerfect});
+      {@nullable String id,
+      @nullable Float tp,
+      @nullable int perfect,
+      @nullable int good,
+      @nullable int bad,
+      @nullable int miss,
+      @nullable int blackPerfect});
 }
 
 /// @nodoc
@@ -103,13 +110,13 @@ abstract class _$ResultCopyWith<$Res> implements $ResultModelCopyWith<$Res> {
       __$ResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      Float tp,
-      int perfect,
-      int good,
-      int bad,
-      int miss,
-      int blackPerfect});
+      {@nullable String id,
+      @nullable Float tp,
+      @nullable int perfect,
+      @nullable int good,
+      @nullable int bad,
+      @nullable int miss,
+      @nullable int blackPerfect});
 }
 
 /// @nodoc
@@ -147,27 +154,34 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
 /// @nodoc
 class _$_Result implements _Result {
   const _$_Result(
-      {this.id,
-      this.tp,
-      this.perfect,
-      this.good,
-      this.bad,
-      this.miss,
-      this.blackPerfect});
+      {@nullable this.id,
+      @nullable this.tp,
+      @nullable this.perfect,
+      @nullable this.good,
+      @nullable this.bad,
+      @nullable this.miss,
+      @nullable this.blackPerfect});
 
   @override
+  @nullable
   final String id;
   @override
+  @nullable
   final Float tp;
   @override
+  @nullable
   final int perfect;
   @override
+  @nullable
   final int good;
   @override
+  @nullable
   final int bad;
   @override
+  @nullable
   final int miss;
   @override
+  @nullable
   final int blackPerfect;
 
   @override
@@ -215,27 +229,34 @@ class _$_Result implements _Result {
 
 abstract class _Result implements ResultModel {
   const factory _Result(
-      {String id,
-      Float tp,
-      int perfect,
-      int good,
-      int bad,
-      int miss,
-      int blackPerfect}) = _$_Result;
+      {@nullable String id,
+      @nullable Float tp,
+      @nullable int perfect,
+      @nullable int good,
+      @nullable int bad,
+      @nullable int miss,
+      @nullable int blackPerfect}) = _$_Result;
 
   @override
+  @nullable
   String get id;
   @override
+  @nullable
   Float get tp;
   @override
+  @nullable
   int get perfect;
   @override
+  @nullable
   int get good;
   @override
+  @nullable
   int get bad;
   @override
+  @nullable
   int get miss;
   @override
+  @nullable
   int get blackPerfect;
   @override
   _$ResultCopyWith<_Result> get copyWith;

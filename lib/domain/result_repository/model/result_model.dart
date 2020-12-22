@@ -8,12 +8,19 @@ part 'result_model.freezed.dart';
 @freezed
 abstract class ResultModel with _$ResultModel {
   const factory ResultModel({
+    @nullable
     String id,
+    @nullable
     Float tp,
+    @nullable
     int perfect,
+    @nullable
     int good,
+    @nullable
     int bad,
+    @nullable
     int miss,
+    @nullable
     int blackPerfect,
   }) = _Result;
 }
