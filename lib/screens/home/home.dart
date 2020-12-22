@@ -36,7 +36,7 @@ class CalculateForm extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                   padding:
-                      const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
@@ -50,7 +50,8 @@ class CalculateForm extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: CalculateTextField(
                     label: "PERFECT",
                     labelColor: Palette.perfect,
@@ -67,15 +68,30 @@ class CalculateForm extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: RaisedButton(onPressed: () {}),
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    child: Text("計算"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    textColor: Palette.white,
+                    color: Palette.primary,
+                    onPressed: () {},
+                  ),
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(onPressed: () {}),
+                  child: RaisedButton(
+                    child: Text("リセット"),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        side: BorderSide(color: Palette.black)),
+                    color: Palette.white,
+                    onPressed: () {},
+                  ),
                 ),
               ),
 
@@ -86,6 +102,8 @@ class CalculateForm extends StatelessWidget {
               ),
             ],
           ),
+
+          // 線
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Divider(
@@ -120,7 +138,8 @@ class CalculateTextField extends StatelessWidget {
   final List<TextInputFormatter> inputFormatter;
   final Color labelColor;
 
-  const CalculateTextField({Key key, @required this.label, this.inputFormatter, this.labelColor})
+  const CalculateTextField(
+      {Key key, @required this.label, this.inputFormatter, this.labelColor})
       : super(key: key);
 
   @override
@@ -130,7 +149,10 @@ class CalculateTextField extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8, bottom: 8),
-          child: Text(label, style: TextStyle(color: labelColor),),
+          child: Text(
+            label,
+            style: TextStyle(color: labelColor),
+          ),
         ),
         TextField(
             decoration: InputDecoration(
