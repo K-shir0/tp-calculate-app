@@ -10,9 +10,25 @@ class HomeScreen extends HookWidget {
         title: Text("TP Calculate")
       ),
       body: Container(
-
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Container(
+              child: TPTextField(),
+            )
+          ],
+        ),
       ),
     );
   }
-  
+}
+
+class TPTextField extends StatelessWidget  {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      keyboardType: TextInputType.number,
+    );
+  }
+
 }
