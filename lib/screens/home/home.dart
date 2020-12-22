@@ -22,6 +22,10 @@ class HomeScreen extends HookWidget {
 class CalculateForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final valueTextFormatter = <TextInputFormatter>[
+      FilteringTextInputFormatter.digitsOnly
+    ];
+
     return Container(
       child: Column(
         children: [
@@ -46,25 +50,10 @@ class CalculateForm extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CalculateTextField(label: "PERFECT"),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CalculateTextField(label: "PERFECT"),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CalculateTextField(label: "PERFECT"),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CalculateTextField(label: "PERFECT"),
+                  child: CalculateTextField(
+                    label: "PERFECT",
+                    inputFormatter: valueTextFormatter,
+                  ),
                 ),
               ),
             ],
@@ -106,8 +95,7 @@ class CalculateForm extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Padding(
-                  padding:
-                  const EdgeInsets.only(left: 8.0, right: 8.0),
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
@@ -127,8 +115,10 @@ class CalculateForm extends StatelessWidget {
 // Atoms
 class CalculateTextField extends StatelessWidget {
   final String label;
+  final List<TextInputFormatter> inputFormatter;
 
-  const CalculateTextField({Key key, this.label}) : super(key: key);
+  const CalculateTextField({Key key, @required this.label, this.inputFormatter})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -140,16 +130,13 @@ class CalculateTextField extends StatelessWidget {
           child: Text(label),
         ),
         TextField(
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.all(8),
-            border: OutlineInputBorder(),
-          ),
-          keyboardType: TextInputType.number,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
-        ),
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding: EdgeInsets.all(8),
+              border: OutlineInputBorder(),
+            ),
+            keyboardType: TextInputType.number,
+            inputFormatters: inputFormatter),
       ],
     );
   }
