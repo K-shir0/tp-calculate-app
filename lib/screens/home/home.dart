@@ -26,7 +26,7 @@ class CalculateForm extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
             child: CalculateTextField(label: "PERFECT"),
           ),
           Row(
@@ -56,6 +56,38 @@ class CalculateForm extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+
+          // ボタン群
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: RaisedButton(onPressed: () {}),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(onPressed: () {}),
+                ),
+              ),
+
+              // ボタン右のスペース
+              Expanded(
+                flex: 2,
+                child: Container(),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider(
+              color: Colors.black,
+            ),
           )
         ],
       ),
