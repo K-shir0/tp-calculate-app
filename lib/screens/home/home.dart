@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:tp_calculate/config/palette.dart';
 
 class HomeScreen extends HookWidget {
   @override
@@ -52,6 +53,7 @@ class CalculateForm extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CalculateTextField(
                     label: "PERFECT",
+                    labelColor: Palette.perfect,
                     inputFormatter: valueTextFormatter,
                   ),
                 ),
@@ -116,8 +118,9 @@ class CalculateForm extends StatelessWidget {
 class CalculateTextField extends StatelessWidget {
   final String label;
   final List<TextInputFormatter> inputFormatter;
+  final Color labelColor;
 
-  const CalculateTextField({Key key, @required this.label, this.inputFormatter})
+  const CalculateTextField({Key key, @required this.label, this.inputFormatter, this.labelColor})
       : super(key: key);
 
   @override
@@ -127,7 +130,7 @@ class CalculateTextField extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8, bottom: 8),
-          child: Text(label),
+          child: Text(label, style: TextStyle(color: labelColor),),
         ),
         TextField(
             decoration: InputDecoration(
