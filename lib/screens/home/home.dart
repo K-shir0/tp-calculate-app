@@ -26,32 +26,32 @@ class CalculateForm extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(8.0),
             child: CalculateTextField(label: "PERFECT"),
           ),
           Row(
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CalculateTextField(label: "PERFECT"),
                 ),
               ),
@@ -71,13 +71,24 @@ class CalculateTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: new InputDecoration(
-        labelText: label,
-      ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 8, bottom: 8),
+          child: Text(label),
+        ),
+        TextField(
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.all(8),
+            border: OutlineInputBorder(),
+          ),
+          keyboardType: TextInputType.number,
+          inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly
+          ],
+        ),
       ],
     );
   }
