@@ -44,7 +44,7 @@ class CalculateForm extends HookWidget {
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: CalculateTextField(
-                    label: "PERFECT",
+                    label: "TP値",
                   ),
                 ),
               ),
@@ -63,6 +63,38 @@ class CalculateForm extends HookWidget {
                   child: CalculateTextField(
                     label: "PERFECT",
                     labelColor: Palette.perfect,
+                    inputFormatter: valueTextFormatter,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "GOOD",
+                    labelColor: Palette.good,
+                    inputFormatter: valueTextFormatter,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "BAD",
+                    labelColor: Palette.bad,
+                    inputFormatter: valueTextFormatter,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "MISS",
                     inputFormatter: valueTextFormatter,
                   ),
                 ),
@@ -125,7 +157,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: CalculateTextField(
-                    label: "PERFECT",
+                    label: "PERFECT(Black)",
                   ),
                 ),
               ),
