@@ -25,9 +25,21 @@ class CalculateForm extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-            child: CalculateTextField(label: "PERFECT"),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(),
+              )
+            ],
           ),
           Row(
             children: [
@@ -78,7 +90,7 @@ class CalculateForm extends StatelessWidget {
 
               // ボタン右のスペース
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Container(),
               ),
             ],
@@ -88,7 +100,24 @@ class CalculateForm extends StatelessWidget {
             child: Divider(
               color: Colors.black,
             ),
-          )
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding:
+                  const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
+              // 右の空白
+              Expanded(
+                flex: 2,
+                child: Container(),
+              )
+            ],
+          ),
         ],
       ),
     );
