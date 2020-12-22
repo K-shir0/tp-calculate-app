@@ -26,6 +26,8 @@ dependencies:
   flutter_hooks: ^0.15.0
   hooks_riverpod: ^0.12.1
   state_notifier: ^0.5.0
+  freezed: ^0.12.6
+  freezed_annotation:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,6 +39,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  build_runner:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
