@@ -25,13 +25,36 @@ class CalculateForm extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          CalculateTextField(label: "PERFECT"),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: CalculateTextField(label: "PERFECT"),
+          ),
           Row(
             children: [
-              Expanded(child: CalculateTextField(label: "PERFECT")),
-              Expanded(child: CalculateTextField(label: "PERFECT")),
-              Expanded(child: CalculateTextField(label: "PERFECT")),
-              Expanded(child: CalculateTextField(label: "PERFECT")),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: CalculateTextField(label: "PERFECT"),
+                ),
+              ),
             ],
           )
         ],
@@ -43,18 +66,14 @@ class CalculateForm extends StatelessWidget {
 // Atoms
 class CalculateTextField extends StatelessWidget {
   final String label;
-  final bool hasError;
 
-  const CalculateTextField({Key key, this.label, this.hasError}) : super(key: key);
+  const CalculateTextField({Key key, this.label}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       decoration: new InputDecoration(
         labelText: label,
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red)
-        )
       ),
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
