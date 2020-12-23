@@ -5,10 +5,12 @@ class ResultNotifier extends StateNotifier<ResultModel> {
   ResultNotifier(ResultModel state) : super(state);
 
   void calculate() {
+    // 総ノーツ
     int totalNotes = state.perfect + state.good + state.bad + state.miss;
+    // 黒パフェ
     int blackPerfect = 0;
 
-    // TPが100かどうか
+    // 計算処理
     blackPerfect = (((100 - state.tp) / (100 / totalNotes) -
                 (state.miss + state.bad) -
                 (0.7 * state.good)) /
