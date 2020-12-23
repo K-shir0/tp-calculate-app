@@ -23,6 +23,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
 final resultNotifierProvider = StateNotifierProvider<ResultNotifier>(
   (ref) => ResultNotifier(
-    ResultModel(tp: 100.toDouble()),
+    ResultModel(),
   ),
 );
