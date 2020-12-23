@@ -16,7 +16,7 @@ class _$ResultModelTearOff {
 // ignore: unused_element
   _Result call(
       {@nullable String id,
-      @nullable Float tp,
+      @nullable double tp,
       @nullable int perfect,
       @nullable int good,
       @nullable int bad,
@@ -43,7 +43,7 @@ mixin _$ResultModel {
   @nullable
   String get id;
   @nullable
-  Float get tp;
+  double get tp;
   @nullable
   int get perfect;
   @nullable
@@ -65,7 +65,7 @@ abstract class $ResultModelCopyWith<$Res> {
       _$ResultModelCopyWithImpl<$Res>;
   $Res call(
       {@nullable String id,
-      @nullable Float tp,
+      @nullable double tp,
       @nullable int perfect,
       @nullable int good,
       @nullable int bad,
@@ -93,7 +93,7 @@ class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      tp: tp == freezed ? _value.tp : tp as Float,
+      tp: tp == freezed ? _value.tp : tp as double,
       perfect: perfect == freezed ? _value.perfect : perfect as int,
       good: good == freezed ? _value.good : good as int,
       bad: bad == freezed ? _value.bad : bad as int,
@@ -111,7 +111,7 @@ abstract class _$ResultCopyWith<$Res> implements $ResultModelCopyWith<$Res> {
   @override
   $Res call(
       {@nullable String id,
-      @nullable Float tp,
+      @nullable double tp,
       @nullable int perfect,
       @nullable int good,
       @nullable int bad,
@@ -140,7 +140,7 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
   }) {
     return _then(_Result(
       id: id == freezed ? _value.id : id as String,
-      tp: tp == freezed ? _value.tp : tp as Float,
+      tp: tp == freezed ? _value.tp : tp as double,
       perfect: perfect == freezed ? _value.perfect : perfect as int,
       good: good == freezed ? _value.good : good as int,
       bad: bad == freezed ? _value.bad : bad as int,
@@ -167,7 +167,7 @@ class _$_Result implements _Result {
   final String id;
   @override
   @nullable
-  final Float tp;
+  final double tp;
   @override
   @nullable
   final int perfect;
@@ -230,7 +230,7 @@ class _$_Result implements _Result {
 abstract class _Result implements ResultModel {
   const factory _Result(
       {@nullable String id,
-      @nullable Float tp,
+      @nullable double tp,
       @nullable int perfect,
       @nullable int good,
       @nullable int bad,
@@ -242,7 +242,7 @@ abstract class _Result implements ResultModel {
   String get id;
   @override
   @nullable
-  Float get tp;
+  double get tp;
   @override
   @nullable
   int get perfect;

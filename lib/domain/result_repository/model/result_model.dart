@@ -11,7 +11,7 @@ abstract class ResultModel with _$ResultModel {
     @nullable
     String id,
     @nullable
-    Float tp,
+    double tp,
     @nullable
     int perfect,
     @nullable

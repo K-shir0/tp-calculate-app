@@ -116,7 +116,9 @@ class CalculateForm extends HookWidget {
                     ),
                     textColor: Palette.white,
                     color: Palette.primary,
-                    onPressed: () {},
+                    onPressed: () {
+                      result.calculate();
+                    },
                   ),
                 ),
               ),
