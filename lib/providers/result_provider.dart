@@ -17,8 +17,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
     state = state.copyWith(blackPerfect: blackPerfect);
 
-    print(state.blackPerfect);
-
     //TODO データの保存
   }
 }
