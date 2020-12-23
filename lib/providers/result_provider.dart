@@ -9,23 +9,17 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     int blackPerfect = 0;
 
     // TPが100かどうか
-    blackPerfect = (
-        (totalNotes * (100 - state.tp)) / 30 - (1 / 3) * (7 * state.good + 10 * (state.miss + state.bad))
-    ).round();
+    blackPerfect = (((100 - state.tp) / (100 / totalNotes) -
+                (state.miss + state.bad) -
+                (0.7 * state.good)) /
+            0.3)
+        .round();
 
-    state = state.copyWith( blackPerfect: blackPerfect);
+    state = state.copyWith(blackPerfect: blackPerfect);
 
     print(state.blackPerfect);
 
     //TODO データの保存
-
-    // if (result.tp.toInt() == 100) {
-    //   blackPerfect = ((100 - result.tp) / 30 * totalNote).roundToInt()
-    // } else {
-    //   blackPerfect = (
-    //       (totalNote * (100 - result.tp)) / 30 - (1 / 3) * (7 * result.good + 10 * (result.miss + result.bad))
-    //   ).roundToInt()
-    // }
   }
 }
 

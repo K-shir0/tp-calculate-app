@@ -32,4 +32,14 @@ void main() {
 
     expect(resultNotifier.debugState.blackPerfect, 152);
   });
+
+  test("計算テスト 2", () {
+    final ResultNotifier resultNotifier = new ResultNotifier(
+      ResultModel(tp: 92.17, perfect: 898, good: 2, bad: 0, miss: 28),
+    );
+
+    resultNotifier.calculate();
+
+    expect(resultNotifier.debugState.blackPerfect, 144);
+  });
 }
