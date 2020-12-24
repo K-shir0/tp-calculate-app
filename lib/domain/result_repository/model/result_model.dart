@@ -10,7 +10,7 @@ abstract class ResultModel with _$ResultModel {
   const factory ResultModel({
     @nullable
     String id,
-    @nullable
+    @Default(0)
     double tp,
     @nullable
     int perfect,
