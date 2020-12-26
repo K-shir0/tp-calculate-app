@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
@@ -38,7 +39,7 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     String base64Image = new Base64Encoder().convert(imageBytes);
 
     final dio = new Dio();
-    final url = "https://qphvaob7t0.execute-api.us-east-1.amazonaws.com/v1/s3";
+    final url = DotEnv().env['API_SERVER_URL'];
 
     final payload = {"result_image": base64Image};
 
