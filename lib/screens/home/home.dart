@@ -29,7 +29,7 @@ class HomeScreen extends HookWidget {
             title: Text("TP Calculate"),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsets.only(right: 8.0),
                 child: IconButton(
                     icon: Icon(Icons.photo_library_outlined),
                     onPressed: () {
