@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/all.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
+import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 
 class ResultNotifier extends StateNotifier<ResultModel> {
   ResultNotifier(ResultModel state) : super(state);
@@ -25,6 +26,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
 final resultNotifierProvider = StateNotifierProvider<ResultNotifier>(
   (ref) => ResultNotifier(
-    ResultModel(),
+    ResultModelFactory().create(),
   ),
 );
