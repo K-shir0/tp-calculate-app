@@ -39,11 +39,9 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     String base64Image = new Base64Encoder().convert(imageBytes);
 
     final dio = new Dio();
-    final url = DotEnv().env['API_SERVER_URL'];
+    const url = String.fromEnvironment("API_SERVER_URL");
 
-    final test = DotEnv().env['SHLVL'];
-
-    print(test);
+    print(url);
 
     final payload = {"result_image": base64Image};
 
