@@ -1,4 +1,4 @@
-# Automatically generated on 2020-12-26 UTC from https://codemagic.io/app/5fe78e8d9a189efdf19d621f/settings
+# Automatically generated on 2020-12-26 UTC from https://codemagic.io/app/5fe7936515bfd1ef46db6087/settings
 # Note that this configuration is not an exact match to UI settings. Review and adjust as necessary.
 
 workflows:
@@ -9,13 +9,6 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: '*'
-          include: true
-          source: true
     scripts:
       - |
         # set up debug keystore
