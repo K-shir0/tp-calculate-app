@@ -58,11 +58,9 @@ class HomeScreen extends HookWidget {
                                 result.state.miss.toString();
                             blackPerfectTextController.text =
                                 result.state.blackPerfect.toString();
-
-                            isLoading.value = false;
-                          }).whenComplete(() {
+                          }).catchError((e) {
                             print("リザルトではない画像が選ばれました");
-
+                          }).whenComplete(() {
                             isLoading.value = false;
                           });
                         },
