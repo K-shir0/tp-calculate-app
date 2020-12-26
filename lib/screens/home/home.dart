@@ -9,9 +9,19 @@ import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
 
+final blackPerfectTextController = new TextEditingController();
+final tpTextController = new TextEditingController();
+final perfectTextController = new TextEditingController();
+final goodTextController = new TextEditingController();
+final badTextController = new TextEditingController();
+final missTextController = new TextEditingController();
+
 class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final result = useProvider(resultNotifierProvider);
+    ResultModel resultState = result.state;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("TP Calculate"),
@@ -25,12 +35,30 @@ class HomeScreen extends HookWidget {
 
                   final picker = ImagePicker();
 
-                  picker
-                      .getImage(source: ImageSource.gallery)
-                      .then((pickedFile) {
-                    print(pickedFile.path);
-                  });
+                  picker.getImage(source: ImageSource.gallery).then(
+                    (pickedFile) {
+                      // 送信処理
+                      print(pickedFile.path);
 
+                      result.postImage(pickedFile.path).then((value) {
+                        print("画像をセット開始");
+
+                        tpTextController.text =
+                            resultState.tp.toString();
+                        perfectTextController.text =
+                            resultState.perfect.toString();
+                        goodTextController.text =
+                            resultState.good.toString();
+                        badTextController.text =
+                            resultState.bad.toString();
+                        missTextController.text =
+                            resultState.miss.toString();
+
+                        blackPerfectTextController.text =
+                            resultState.blackPerfect.toString();
+                      });
+                    },
+                  );
                 }),
           )
         ],
@@ -55,13 +83,6 @@ class CalculateForm extends HookWidget {
 
     final result = useProvider(resultNotifierProvider);
     ResultModel resultState = result.state;
-
-    final blackPerfectTextController = new TextEditingController();
-    final tpTextController = new TextEditingController();
-    final perfectTextController = new TextEditingController();
-    final goodTextController = new TextEditingController();
-    final badTextController = new TextEditingController();
-    final missTextController = new TextEditingController();
 
     final setTextField = () {
       print("テキストフィールドセット");
@@ -186,8 +207,6 @@ class CalculateForm extends HookWidget {
 
                     blackPerfectTextController.text =
                         resultState.blackPerfect.toString();
-
-                    resultState = ResultModel();
 
                     resultState = ResultModelFactory().create();
                   },

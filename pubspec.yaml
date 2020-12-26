@@ -44,6 +44,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   build_runner:
+  json_serializable:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

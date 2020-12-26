@@ -7,35 +7,50 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
+import 'package:uuid/uuid.dart';
 
 void main() {
   group("Result Notifierのテスト", () {
+    final uuid = Uuid();
+
     test("TPの値", () {
       final ResultNotifier resultNotifier = new ResultNotifier(
-        ResultModel(tp: 100),
+        ResultModel(id: uuid.v4().toString(), tp: 100),
       );
 
       expect(resultNotifier.debugState.tp, 100);
     });
-  });
 
-  test("計算テスト 1", () {
-    final ResultNotifier resultNotifier = new ResultNotifier(
-      ResultModel(tp: 96.03, perfect: 1601, good: 11, bad: 1, miss: 10),
-    );
+    test("計算テスト 1", () {
+      final ResultNotifier resultNotifier = new ResultNotifier(
+        ResultModel(
+            id: uuid.v4().toString(),
+            tp: 96.03,
+            perfect: 1601,
+            good: 11,
+            bad: 1,
+            miss: 10),
+      );
 
-    resultNotifier.calculate();
+      resultNotifier.calculate();
 
-    expect(resultNotifier.debugState.blackPerfect, 152);
-  });
+      expect(resultNotifier.debugState.blackPerfect, 152);
+    });
 
-  test("計算テスト 2", () {
-    final ResultNotifier resultNotifier = new ResultNotifier(
-      ResultModel(tp: 92.17, perfect: 898, good: 2, bad: 0, miss: 28),
-    );
+    test("計算テスト 2", () {
+      final ResultNotifier resultNotifier = new ResultNotifier(
+        ResultModel(
+            id: uuid.v4().toString(),
+            tp: 92.17,
+            perfect: 898,
+            good: 2,
+            bad: 0,
+            miss: 28),
+      );
 
-    resultNotifier.calculate();
+      resultNotifier.calculate();
 
-    expect(resultNotifier.debugState.blackPerfect, 144);
+      expect(resultNotifier.debugState.blackPerfect, 144);
+    });
   });
 }
