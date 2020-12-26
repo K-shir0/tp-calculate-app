@@ -212,6 +212,7 @@ class CalculateForm extends HookWidget {
                   child: CalculateTextField(
                     label: "PERFECT(Black)",
                     controller: blackPerfectTextController,
+                    isEnabled: false,
                   ),
                 ),
               ),
