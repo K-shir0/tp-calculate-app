@@ -60,6 +60,10 @@ class HomeScreen extends HookWidget {
                                 result.state.blackPerfect.toString();
 
                             isLoading.value = false;
+                          }).whenComplete(() {
+                            print("リザルトではない画像が選ばれました");
+
+                            isLoading.value = false;
                           });
                         },
                       ).catchError((e) => isLoading.value = false);

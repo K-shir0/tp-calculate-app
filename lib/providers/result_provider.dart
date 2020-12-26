@@ -42,31 +42,35 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
     final payload = {"result_image": base64Image};
 
-    await dio
-        .post(
-      url,
-      data: payload,
-      options: Options(
-        headers: {
-          HttpHeaders.contentTypeHeader: "application/json",
-        },
-      ),
-    )
-        .then((value) {
-      // Map<String, dynamic> user =;
+    try {
+      await dio
+          .post(
+        url,
+        data: payload,
+        options: Options(
+          headers: {
+            HttpHeaders.contentTypeHeader: "application/json",
+          },
+        ),
+      )
+          .then((value) {
+        // Map<String, dynamic> user =;
 
-      final resultJson = json.decode(
-        value.toString(),
-      );
+        final resultJson = json.decode(
+          value.toString(),
+        );
 
-      resultJson["id"] = Uuid().v4().toString();
+        resultJson["id"] = Uuid().v4().toString();
 
-      state = ResultModel.fromJson(
-        resultJson
-      );
+        state = ResultModel.fromJson(
+            resultJson
+        );
 
-      calculate();
-    });
+        calculate();
+      });
+    } catch (e) {
+      throw e;
+    }
   }
 }
 
