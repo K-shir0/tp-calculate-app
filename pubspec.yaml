@@ -42,8 +42,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
   build_runner:
   json_serializable:
 
