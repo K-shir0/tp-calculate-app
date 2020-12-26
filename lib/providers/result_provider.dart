@@ -41,6 +41,10 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     final dio = new Dio();
     final url = DotEnv().env['API_SERVER_URL'];
 
+    final test = DotEnv().env['SHLVL'];
+
+    print(test);
+
     final payload = {"result_image": base64Image};
 
     try {
@@ -55,7 +59,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
         ),
       )
           .then((value) {
-        // Map<String, dynamic> user =;
 
         final resultJson = json.decode(
           value.toString(),
