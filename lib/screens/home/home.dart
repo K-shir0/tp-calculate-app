@@ -12,7 +12,16 @@ class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("TP Calculate")),
+      appBar: AppBar(
+        title: Text("TP Calculate"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: IconButton(
+                icon: Icon(Icons.photo_library_outlined), onPressed: () {}),
+          )
+        ],
+      ),
       body: Container(
         padding: EdgeInsets.all(16),
         child: CalculateForm(),
@@ -47,8 +56,9 @@ class CalculateForm extends HookWidget {
       resultState = resultState.copyWith(
         tp: double.parse(
             tpTextController.text == "" ? "0" : tpTextController.text),
-        perfect: int.parse(
-            perfectTextController.text == "" ? "0" : perfectTextController.text),
+        perfect: int.parse(perfectTextController.text == ""
+            ? "0"
+            : perfectTextController.text),
         good: int.parse(
             goodTextController.text == "" ? "0" : perfectTextController.text),
         bad: int.parse(
@@ -66,165 +76,163 @@ class CalculateForm extends HookWidget {
       missTextController.text = "";
     };
 
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
-                    label: "TP値",
-                    controller: tpTextController,
-                  ),
+    return ListView(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                child: CalculateTextField(
+                  label: "TP値",
+                  controller: tpTextController,
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Container(),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
-                    label: "PERFECT",
-                    labelColor: Palette.perfect,
-                    inputFormatter: valueTextFormatter,
-                    controller: perfectTextController,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
-                    label: "GOOD",
-                    labelColor: Palette.good,
-                    inputFormatter: valueTextFormatter,
-                    controller: goodTextController,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
-                    label: "BAD",
-                    labelColor: Palette.bad,
-                    inputFormatter: valueTextFormatter,
-                    controller: badTextController,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
-                    label: "MISS",
-                    inputFormatter: valueTextFormatter,
-                    controller: missTextController,
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          // ボタン群
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    child: Text("計算"),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    textColor: Palette.white,
-                    color: Palette.primary,
-                    onPressed: () {
-                      setTextField();
-
-                      result.calculate();
-
-                      print(resultState);
-
-                      blackPerfectTextController.text =
-                          resultState.blackPerfect.toString();
-
-                      resultState = ResultModel();
-
-                      resultState = ResultModelFactory().create();
-                    },
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: RaisedButton(
-                    child: Text("リセット"),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        side: BorderSide(color: Palette.black)),
-                    color: Palette.white,
-                    onPressed: () {
-                      onClear();
-                    },
-                  ),
-                ),
-              ),
-
-              // ボタン右のスペース
-              Expanded(
-                flex: 1,
-                child: Container(),
-              ),
-            ],
-          ),
-
-          // 線
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Divider(
-              color: Colors.black,
             ),
-          ),
-          Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: CalculateTextField(
-                    label: "PERFECT(Black)",
-                    controller: blackPerfectTextController,
-                    isEnabled: false,
-                  ),
+            Expanded(
+              flex: 2,
+              child: Container(),
+            )
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                child: CalculateTextField(
+                  label: "PERFECT",
+                  labelColor: Palette.perfect,
+                  inputFormatter: valueTextFormatter,
+                  controller: perfectTextController,
                 ),
               ),
-              // 右の空白
-              Expanded(
-                flex: 2,
-                child: Container(),
-              )
-            ],
+            ),
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                child: CalculateTextField(
+                  label: "GOOD",
+                  labelColor: Palette.good,
+                  inputFormatter: valueTextFormatter,
+                  controller: goodTextController,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                child: CalculateTextField(
+                  label: "BAD",
+                  labelColor: Palette.bad,
+                  inputFormatter: valueTextFormatter,
+                  controller: badTextController,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                child: CalculateTextField(
+                  label: "MISS",
+                  inputFormatter: valueTextFormatter,
+                  controller: missTextController,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        // ボタン群
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RaisedButton(
+                  child: Text("計算"),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  textColor: Palette.white,
+                  color: Palette.primary,
+                  onPressed: () {
+                    setTextField();
+
+                    result.calculate();
+
+                    print(resultState);
+
+                    blackPerfectTextController.text =
+                        resultState.blackPerfect.toString();
+
+                    resultState = ResultModel();
+
+                    resultState = ResultModelFactory().create();
+                  },
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RaisedButton(
+                  child: Text("リセット"),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      side: BorderSide(color: Palette.black)),
+                  color: Palette.white,
+                  onPressed: () {
+                    onClear();
+                  },
+                ),
+              ),
+            ),
+
+            // ボタン右のスペース
+            Expanded(
+              flex: 1,
+              child: Container(),
+            ),
+          ],
+        ),
+
+        // 線
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Divider(
+            color: Colors.black,
           ),
-        ],
-      ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: CalculateTextField(
+                  label: "PERFECT(Black)",
+                  controller: blackPerfectTextController,
+                  isEnabled: false,
+                ),
+              ),
+            ),
+            // 右の空白
+            Expanded(
+              flex: 2,
+              child: Container(),
+            )
+          ],
+        ),
+      ],
     );
   }
 }
