@@ -20,48 +20,68 @@ class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useProvider(resultNotifierProvider);
+    final isLoading = useState(false);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("TP Calculate"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: IconButton(
-                icon: Icon(Icons.photo_library_outlined),
-                onPressed: () {
-                  print("写真選択ボタンが押された");
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: AppBar(
+            title: Text("TP Calculate"),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: IconButton(
+                    icon: Icon(Icons.photo_library_outlined),
+                    onPressed: () {
+                      print("写真選択ボタンが押された");
+                      isLoading.value = true;
 
-                  final picker = ImagePicker();
+                      final picker = ImagePicker();
 
-                  picker.getImage(source: ImageSource.gallery).then(
-                    (pickedFile) {
-                      // 送信処理
-                      print(pickedFile.path);
+                      picker.getImage(source: ImageSource.gallery).then(
+                        (pickedFile) {
+                          // 送信処理
+                          print(pickedFile.path);
 
-                      result.postImage(pickedFile.path).then((value) {
-                        print("画像をセット開始");
-                        print(result.state);
+                          result.postImage(pickedFile.path).then((value) {
+                            print("画像をセット開始");
+                            print(result.state);
 
-                        tpTextController.text = result.state.tp.toString();
-                        perfectTextController.text =
-                            result.state.perfect.toString();
-                        goodTextController.text = result.state.good.toString();
-                        badTextController.text = result.state.bad.toString();
-                        missTextController.text = result.state.miss.toString();
-                        blackPerfectTextController.text =
-                            result.state.blackPerfect.toString();
-                      });
-                    },
-                  );
-                }),
-          )
-        ],
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: CalculateForm(),
-      ),
+                            tpTextController.text = result.state.tp.toString();
+                            perfectTextController.text =
+                                result.state.perfect.toString();
+                            goodTextController.text =
+                                result.state.good.toString();
+                            badTextController.text =
+                                result.state.bad.toString();
+                            missTextController.text =
+                                result.state.miss.toString();
+                            blackPerfectTextController.text =
+                                result.state.blackPerfect.toString();
+
+                            isLoading.value = false;
+                          });
+                        },
+                      ).catchError((e) => isLoading.value = false);
+                    }),
+              )
+            ],
+          ),
+          body: Container(
+            padding: EdgeInsets.all(16),
+            child: CalculateForm(),
+          ),
+        ),
+        isLoading.value
+            ? Container(
+                decoration: new BoxDecoration(
+                  color: Color.fromRGBO(0, 0, 0, 0.6),
+                ),
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(),
+              )
+            : Container()
+      ],
     );
   }
 }
