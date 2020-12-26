@@ -74,6 +74,7 @@ class CalculateForm extends HookWidget {
       goodTextController.text = "";
       badTextController.text = "";
       missTextController.text = "";
+      blackPerfectTextController.text = "";
     };
 
     return ListView(
