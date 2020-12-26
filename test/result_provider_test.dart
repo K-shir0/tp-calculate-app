@@ -4,13 +4,9 @@
 // utility that Flutter provides. For example, you can send tap and scroll
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/all.dart';
-import 'package:tp_calculate/app.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
-import 'package:tp_calculate/screens/example/example.dart';
 
 void main() {
   group("Result Notifierのテスト", () {

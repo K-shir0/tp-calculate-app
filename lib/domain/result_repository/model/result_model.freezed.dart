@@ -16,12 +16,12 @@ class _$ResultModelTearOff {
 // ignore: unused_element
   _Result call(
       {@nullable String id,
-      @nullable double tp,
-      @nullable int perfect,
-      @nullable int good,
-      @nullable int bad,
-      @nullable int miss,
-      @nullable int blackPerfect}) {
+      double tp = 0,
+      int perfect = 0,
+      int good = 0,
+      int bad = 0,
+      int miss = 0,
+      int blackPerfect = 0}) {
     return _Result(
       id: id,
       tp: tp,
@@ -42,17 +42,11 @@ const $ResultModel = _$ResultModelTearOff();
 mixin _$ResultModel {
   @nullable
   String get id;
-  @nullable
   double get tp;
-  @nullable
   int get perfect;
-  @nullable
   int get good;
-  @nullable
   int get bad;
-  @nullable
   int get miss;
-  @nullable
   int get blackPerfect;
 
   $ResultModelCopyWith<ResultModel> get copyWith;
@@ -65,12 +59,12 @@ abstract class $ResultModelCopyWith<$Res> {
       _$ResultModelCopyWithImpl<$Res>;
   $Res call(
       {@nullable String id,
-      @nullable double tp,
-      @nullable int perfect,
-      @nullable int good,
-      @nullable int bad,
-      @nullable int miss,
-      @nullable int blackPerfect});
+      double tp,
+      int perfect,
+      int good,
+      int bad,
+      int miss,
+      int blackPerfect});
 }
 
 /// @nodoc
@@ -111,12 +105,12 @@ abstract class _$ResultCopyWith<$Res> implements $ResultModelCopyWith<$Res> {
   @override
   $Res call(
       {@nullable String id,
-      @nullable double tp,
-      @nullable int perfect,
-      @nullable int good,
-      @nullable int bad,
-      @nullable int miss,
-      @nullable int blackPerfect});
+      double tp,
+      int perfect,
+      int good,
+      int bad,
+      int miss,
+      int blackPerfect});
 }
 
 /// @nodoc
@@ -155,33 +149,39 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
 class _$_Result implements _Result {
   const _$_Result(
       {@nullable this.id,
-      @nullable this.tp,
-      @nullable this.perfect,
-      @nullable this.good,
-      @nullable this.bad,
-      @nullable this.miss,
-      @nullable this.blackPerfect});
+      this.tp = 0,
+      this.perfect = 0,
+      this.good = 0,
+      this.bad = 0,
+      this.miss = 0,
+      this.blackPerfect = 0})
+      : assert(tp != null),
+        assert(perfect != null),
+        assert(good != null),
+        assert(bad != null),
+        assert(miss != null),
+        assert(blackPerfect != null);
 
   @override
   @nullable
   final String id;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final double tp;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final int perfect;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final int good;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final int bad;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final int miss;
+  @JsonKey(defaultValue: 0)
   @override
-  @nullable
   final int blackPerfect;
 
   @override
@@ -230,33 +230,27 @@ class _$_Result implements _Result {
 abstract class _Result implements ResultModel {
   const factory _Result(
       {@nullable String id,
-      @nullable double tp,
-      @nullable int perfect,
-      @nullable int good,
-      @nullable int bad,
-      @nullable int miss,
-      @nullable int blackPerfect}) = _$_Result;
+      double tp,
+      int perfect,
+      int good,
+      int bad,
+      int miss,
+      int blackPerfect}) = _$_Result;
 
   @override
   @nullable
   String get id;
   @override
-  @nullable
   double get tp;
   @override
-  @nullable
   int get perfect;
   @override
-  @nullable
   int get good;
   @override
-  @nullable
   int get bad;
   @override
-  @nullable
   int get miss;
   @override
-  @nullable
   int get blackPerfect;
   @override
   _$ResultCopyWith<_Result> get copyWith;

@@ -28,6 +28,7 @@ dependencies:
   state_notifier: ^0.5.0
   freezed: ^0.12.6
   freezed_annotation:
+  uuid: 2.2.2
 
 
   # The following adds the Cupertino Icons font to your application.

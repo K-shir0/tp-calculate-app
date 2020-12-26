@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tp_calculate/config/palette.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
+import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
 
 class HomeScreen extends HookWidget {
@@ -30,8 +31,8 @@ class CalculateForm extends HookWidget {
       FilteringTextInputFormatter.digitsOnly
     ];
 
-    final resultModel = ResultModel();
     final result = useProvider(resultNotifierProvider);
+    ResultModel resultState = result.state;
 
     final blackPerfectTextController = new TextEditingController();
     final tpTextController = new TextEditingController();
@@ -41,7 +42,9 @@ class CalculateForm extends HookWidget {
     final missTextController = new TextEditingController();
 
     final setTextField = () {
-      result.state = result.state.copyWith(
+      print("テキストフィールドセット");
+
+      resultState = resultState.copyWith(
         tp: double.parse(
             tpTextController.text == "" ? "0" : tpTextController.text),
         perfect: int.parse(
@@ -156,10 +159,14 @@ class CalculateForm extends HookWidget {
 
                       result.calculate();
 
-                      blackPerfectTextController.text =
-                          result.state.blackPerfect.toString();
+                      print(resultState);
 
-                      result.state = ResultModel();
+                      blackPerfectTextController.text =
+                          resultState.blackPerfect.toString();
+
+                      resultState = ResultModel();
+
+                      resultState = ResultModelFactory().create();
                     },
                   ),
                 ),

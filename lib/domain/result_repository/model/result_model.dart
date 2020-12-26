@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result_model.freezed.dart';
@@ -12,15 +10,15 @@ abstract class ResultModel with _$ResultModel {
     String id,
     @Default(0)
     double tp,
-    @nullable
+    @Default(0)
     int perfect,
-    @nullable
+    @Default(0)
     int good,
-    @nullable
+    @Default(0)
     int bad,
-    @nullable
+    @Default(0)
     int miss,
-    @nullable
+    @Default(0)
     int blackPerfect,
   }) = _Result;
 }
