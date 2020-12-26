@@ -20,7 +20,6 @@ class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useProvider(resultNotifierProvider);
-    ResultModel resultState = result.state;
 
     return Scaffold(
       appBar: AppBar(
@@ -42,20 +41,16 @@ class HomeScreen extends HookWidget {
 
                       result.postImage(pickedFile.path).then((value) {
                         print("画像をセット開始");
+                        print(result.state);
 
-                        tpTextController.text =
-                            resultState.tp.toString();
+                        tpTextController.text = result.state.tp.toString();
                         perfectTextController.text =
-                            resultState.perfect.toString();
-                        goodTextController.text =
-                            resultState.good.toString();
-                        badTextController.text =
-                            resultState.bad.toString();
-                        missTextController.text =
-                            resultState.miss.toString();
-
+                            result.state.perfect.toString();
+                        goodTextController.text = result.state.good.toString();
+                        badTextController.text = result.state.bad.toString();
+                        missTextController.text = result.state.miss.toString();
                         blackPerfectTextController.text =
-                            resultState.blackPerfect.toString();
+                            result.state.blackPerfect.toString();
                       });
                     },
                   );

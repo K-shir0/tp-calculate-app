@@ -12,6 +12,7 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
   void calculate() {
     print("計算開始");
+    print(state);
 
     // 総ノーツ
     int totalNotes = state.perfect + state.good + state.bad + state.miss;
