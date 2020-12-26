@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:tp_calculate/config/palette.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
@@ -18,7 +19,19 @@ class HomeScreen extends HookWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
-                icon: Icon(Icons.photo_library_outlined), onPressed: () {}),
+                icon: Icon(Icons.photo_library_outlined),
+                onPressed: () {
+                  print("写真選択ボタンが押された");
+
+                  final picker = ImagePicker();
+
+                  picker
+                      .getImage(source: ImageSource.gallery)
+                      .then((pickedFile) {
+                    print(pickedFile.path);
+                  });
+
+                }),
           )
         ],
       ),
