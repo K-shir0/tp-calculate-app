@@ -18,7 +18,7 @@ class _$ResultModelTearOff {
 
 // ignore: unused_element
   _Result call(
-      {@required String id,
+      {@nullable String id,
       @JsonKey(name: "TP") double tp = 0,
       @JsonKey(name: "PERFECT") int perfect = 0,
       @JsonKey(name: "GOOD") int good = 0,
@@ -48,6 +48,7 @@ const $ResultModel = _$ResultModelTearOff();
 
 /// @nodoc
 mixin _$ResultModel {
+  @nullable
   String get id;
   @JsonKey(name: "TP")
   double get tp;
@@ -71,7 +72,7 @@ abstract class $ResultModelCopyWith<$Res> {
           ResultModel value, $Res Function(ResultModel) then) =
       _$ResultModelCopyWithImpl<$Res>;
   $Res call(
-      {String id,
+      {@nullable String id,
       @JsonKey(name: "TP") double tp,
       @JsonKey(name: "PERFECT") int perfect,
       @JsonKey(name: "GOOD") int good,
@@ -117,7 +118,7 @@ abstract class _$ResultCopyWith<$Res> implements $ResultModelCopyWith<$Res> {
       __$ResultCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
+      {@nullable String id,
       @JsonKey(name: "TP") double tp,
       @JsonKey(name: "PERFECT") int perfect,
       @JsonKey(name: "GOOD") int good,
@@ -163,15 +164,14 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
 /// @nodoc
 class _$_Result implements _Result {
   const _$_Result(
-      {@required this.id,
+      {@nullable this.id,
       @JsonKey(name: "TP") this.tp = 0,
       @JsonKey(name: "PERFECT") this.perfect = 0,
       @JsonKey(name: "GOOD") this.good = 0,
       @JsonKey(name: "BAD") this.bad = 0,
       @JsonKey(name: "MISS") this.miss = 0,
       this.blackPerfect = 0})
-      : assert(id != null),
-        assert(tp != null),
+      : assert(tp != null),
         assert(perfect != null),
         assert(good != null),
         assert(bad != null),
@@ -182,6 +182,7 @@ class _$_Result implements _Result {
       _$_$_ResultFromJson(json);
 
   @override
+  @nullable
   final String id;
   @override
   @JsonKey(name: "TP")
@@ -252,7 +253,7 @@ class _$_Result implements _Result {
 
 abstract class _Result implements ResultModel {
   const factory _Result(
-      {@required String id,
+      {@nullable String id,
       @JsonKey(name: "TP") double tp,
       @JsonKey(name: "PERFECT") int perfect,
       @JsonKey(name: "GOOD") int good,
@@ -263,6 +264,7 @@ abstract class _Result implements ResultModel {
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
   @override
+  @nullable
   String get id;
   @override
   @JsonKey(name: "TP")

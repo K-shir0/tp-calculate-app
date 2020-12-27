@@ -6,7 +6,7 @@ part 'result_model.g.dart';
 @freezed
 abstract class ResultModel with _$ResultModel {
   const factory ResultModel({
-    @Required()
+    @nullable
     String id,
     @Default(0)
     @JsonKey(name: "TP")

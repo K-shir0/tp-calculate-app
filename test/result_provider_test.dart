@@ -7,11 +7,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
-import 'package:uuid/uuid.dart';
 
 void main() {
   group("Result Notifierのテスト", () {
-    final uuid = Uuid();
 
     test("TPの値", () {
       final ResultNotifier resultNotifier = new ResultNotifier(

@@ -39,8 +39,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     final dio = new Dio();
     const url = String.fromEnvironment("API_SERVER_URL");
 
-    print(url);
-
     final payload = {"result_image": base64Image};
 
     try {
