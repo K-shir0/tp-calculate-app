@@ -225,7 +225,7 @@ class CalculateForm extends HookWidget {
                     blackPerfectTextController.text =
                         resultState.blackPerfect.toString();
 
-                    resultState = ResultModelFactory().create();
+                    resultState = ResultModelFactory.create();
                   },
                 ),
               ),

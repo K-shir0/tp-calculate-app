@@ -2,11 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
-import 'package:uuid/uuid.dart';
 
 class ResultNotifier extends StateNotifier<ResultModel> {
   ResultNotifier(ResultModel state) : super(state);
@@ -57,15 +55,18 @@ class ResultNotifier extends StateNotifier<ResultModel> {
         ),
       )
           .then((value) {
-
         final resultJson = json.decode(
           value.toString(),
         );
 
-        resultJson["id"] = Uuid().v4().toString();
+        final fromJsonResultModel = ResultModel.fromJson(resultJson);
 
-        state = ResultModel.fromJson(
-            resultJson
+        state = ResultModelFactory.create(
+          tp: fromJsonResultModel.tp,
+          perfect: fromJsonResultModel.perfect,
+          good: fromJsonResultModel.good,
+          bad: fromJsonResultModel.bad,
+          miss: fromJsonResultModel.miss
         );
 
         calculate();
@@ -78,6 +79,6 @@ class ResultNotifier extends StateNotifier<ResultModel> {
 
 final resultNotifierProvider = StateNotifierProvider<ResultNotifier>(
   (ref) => ResultNotifier(
-    ResultModelFactory().create(),
+    ResultModelFactory.create(),
   ),
 );

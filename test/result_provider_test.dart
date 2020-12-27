@@ -5,7 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
+import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,7 +15,7 @@ void main() {
 
     test("TPの値", () {
       final ResultNotifier resultNotifier = new ResultNotifier(
-        ResultModel(id: uuid.v4().toString(), tp: 100),
+        ResultModelFactory.create(tp: 100),
       );
 
       expect(resultNotifier.debugState.tp, 100);
@@ -23,8 +23,7 @@ void main() {
 
     test("計算テスト 1", () {
       final ResultNotifier resultNotifier = new ResultNotifier(
-        ResultModel(
-            id: uuid.v4().toString(),
+        ResultModelFactory.create(
             tp: 96.03,
             perfect: 1601,
             good: 11,
@@ -39,8 +38,7 @@ void main() {
 
     test("計算テスト 2", () {
       final ResultNotifier resultNotifier = new ResultNotifier(
-        ResultModel(
-            id: uuid.v4().toString(),
+        ResultModelFactory.create(
             tp: 92.17,
             perfect: 898,
             good: 2,
