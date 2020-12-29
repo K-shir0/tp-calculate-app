@@ -50,6 +50,7 @@ android {
                 keyPassword System.getenv()["FCI_KEY_PASSWORD"]
             }
         }
+    }
 
     buildTypes {
         release {
