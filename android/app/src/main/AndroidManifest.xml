@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.k_shir0.tpcalc.tp_calculate">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="tp_calculate"
         android:icon="@mipmap/ic_launcher"
