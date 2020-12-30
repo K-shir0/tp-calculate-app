@@ -70,6 +70,7 @@ class ResultNotifier extends StateNotifier<ResultModel> {
         calculate();
       });
     } catch (e) {
+      print(e);
       throw e;
     }
   }

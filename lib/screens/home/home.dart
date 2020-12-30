@@ -30,42 +30,66 @@ class HomeScreen extends HookWidget {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: IconButton(
-                    icon: Icon(Icons.photo_library_outlined),
-                    onPressed: () {
-                      print("写真選択ボタンが押された");
-                      isLoading.value = true;
+                child: Builder(
+                  builder: (context) => IconButton(
+                      icon: Icon(Icons.photo_library_outlined),
+                      onPressed: isLoading.value
+                          ? null
+                          : () {
+                              print("写真選択ボタンが押された");
+                              isLoading.value = true;
 
-                      final picker = ImagePicker();
+                              final picker = ImagePicker();
 
-                      picker.getImage(source: ImageSource.gallery).then(
-                        (pickedFile) {
-                          // 送信処理
-                          print(pickedFile.path);
+                              picker.getImage(source: ImageSource.gallery).then(
+                                (pickedFile) {
+                                  // 送信処理
+                                  print(pickedFile.path);
 
-                          result.postImage(pickedFile.path).then((value) {
-                            print("画像をセット開始");
-                            print(result.state);
+                                  result
+                                      .postImage(pickedFile.path)
+                                      .then((value) {
+                                    print("画像をセット開始");
+                                    print(result.state);
 
-                            tpTextController.text = result.state.tp.toString();
-                            perfectTextController.text =
-                                result.state.perfect.toString();
-                            goodTextController.text =
-                                result.state.good.toString();
-                            badTextController.text =
-                                result.state.bad.toString();
-                            missTextController.text =
-                                result.state.miss.toString();
-                            blackPerfectTextController.text =
-                                result.state.blackPerfect.toString();
-                          }).catchError((e) {
-                            print("リザルトではない画像が選ばれました");
-                          }).whenComplete(() {
-                            isLoading.value = false;
-                          });
-                        },
-                      ).catchError((e) => isLoading.value = false);
-                    }),
+                                    tpTextController.text =
+                                        result.state.tp.toString();
+                                    perfectTextController.text =
+                                        result.state.perfect.toString();
+                                    goodTextController.text =
+                                        result.state.good.toString();
+                                    badTextController.text =
+                                        result.state.bad.toString();
+                                    missTextController.text =
+                                        result.state.miss.toString();
+                                    blackPerfectTextController.text =
+                                        result.state.blackPerfect.toString();
+
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      // 画像の読み込みに成功した時のメッセージ
+                                      //TODO localize
+                                      content: Text("画像の読み込みに成功しました。"),
+                                      backgroundColor: Palette.success,
+                                      duration: Duration(seconds: 5),
+                                    ));
+                                  }).catchError((e) {
+                                    print(e);
+                                    print("リザルトではない画像が選ばれました");
+
+                                    Scaffold.of(context).showSnackBar(SnackBar(
+                                      // 画像の読み込みにした時のメッセージ
+                                      //TODO localize
+                                      content: Text("正しく画像が読み込めませんでした。"),
+                                      backgroundColor: Palette.failed,
+                                      duration: Duration(seconds: 5),
+                                    ));
+                                  }).whenComplete(() {
+                                    isLoading.value = false;
+                                  });
+                                },
+                              ).catchError((e) => isLoading.value = false);
+                            }),
+                ),
               )
             ],
           ),

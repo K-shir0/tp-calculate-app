@@ -10,4 +10,7 @@ class Palette {
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffFFFFFF);
   static const Color primary = Color(0xff0069D9);
+
+  static const Color success = Color(0xff66BB6A);
+  static const Color failed = Color(0xffD92221);
 }
