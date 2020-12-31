@@ -46,9 +46,9 @@ class HomeScreen extends HookWidget {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       // 画像の読み込みに成功した時のメッセージ
                                       //TODO localize
-                                      content: Text("画像の読み込みに成功しました。"),
+                                      content: Text("画像の読み込みに成功しました。", textAlign: TextAlign.center,),
                                       backgroundColor: Palette.success,
-                                      duration: Duration(seconds: 5),
+                                      duration: Duration(seconds: 3),
                                     ));
                                   }).catchError((e) {
                                     print(e);
@@ -57,7 +57,7 @@ class HomeScreen extends HookWidget {
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       // 画像の読み込みにした時のメッセージ
                                       //TODO localize
-                                      content: Text("正しく画像が読み込めませんでした。"),
+                                      content: Text("正しく画像が読み込めませんでした。", textAlign: TextAlign.center,),
                                       backgroundColor: Palette.failed,
                                       duration: Duration(seconds: 5),
                                     ));
