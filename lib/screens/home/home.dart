@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tp_calculate/config/palette.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
 
+import 'calculate_text_form_field.dart';
+
 class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
@@ -114,7 +116,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "TP値",
                     onSaved: (value) {
                       result.setTp(double.parse(value));
@@ -138,7 +140,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "PERFECT",
                     labelColor: Palette.perfect,
                     inputFormatter: valueTextFormatter,
@@ -156,7 +158,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "GOOD",
                     labelColor: Palette.good,
                     inputFormatter: valueTextFormatter,
@@ -174,7 +176,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "BAD",
                     labelColor: Palette.bad,
                     inputFormatter: valueTextFormatter,
@@ -192,7 +194,7 @@ class CalculateForm extends HookWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "MISS",
                     inputFormatter: valueTextFormatter,
                     onSaved: (value) {
@@ -272,7 +274,7 @@ class CalculateForm extends HookWidget {
                 flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                  child: CalculateTextField(
+                  child: CalculateTextFormField(
                     label: "PERFECT(Black)",
                     isEnabled: false,
                     initialValue: useProvider(resultNotifierProvider.state)
@@ -291,54 +293,6 @@ class CalculateForm extends HookWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Molecules
-class CalculateTextField extends StatelessWidget {
-  final String label;
-  final List<TextInputFormatter> inputFormatter;
-  final Color labelColor;
-  final bool isEnabled;
-  final Function(String) onSaved;
-  final String initialValue;
-
-  const CalculateTextField(
-      {Key key,
-      @required this.label,
-      this.inputFormatter,
-      this.labelColor,
-      this.isEnabled,
-      this.onSaved,
-      this.initialValue})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 8, bottom: 8),
-          child: Text(
-            label,
-            style: TextStyle(color: labelColor),
-          ),
-        ),
-        TextFormField(
-          decoration: InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.all(8),
-            border: OutlineInputBorder(),
-          ),
-          enabled: isEnabled,
-          keyboardType: TextInputType.number,
-          inputFormatters: inputFormatter,
-          onSaved: onSaved,
-          initialValue: initialValue,
-        ),
-      ],
     );
   }
 }
