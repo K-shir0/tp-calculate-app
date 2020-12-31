@@ -5,9 +5,34 @@ import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/all.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
+import 'package:uuid/uuid.dart';
 
 class ResultNotifier extends StateNotifier<ResultModel> {
   ResultNotifier(ResultModel state) : super(state);
+
+  void reset() {
+    state = ResultModelFactory.create();
+  }
+
+  void setTp(double value) {
+    state = state.copyWith(tp: value);
+  }
+
+  void setPerfect(int value) {
+    state = state.copyWith(perfect: value);
+  }
+
+  void setGood(int value) {
+    state = state.copyWith(good: value);
+  }
+
+  void setBad(int value) {
+    state = state.copyWith(bad: value);
+  }
+
+  void setMiss(int value) {
+    state = state.copyWith(miss: value);
+  }
 
   void calculate() {
     print("計算開始");
@@ -28,6 +53,8 @@ class ResultNotifier extends StateNotifier<ResultModel> {
     state = state.copyWith(blackPerfect: blackPerfect);
 
     //TODO データの保存
+
+    state = state.copyWith(id: Uuid().v4().toString());
   }
 
   Future<void> postImage(String imageFilePath) async {
@@ -60,12 +87,11 @@ class ResultNotifier extends StateNotifier<ResultModel> {
         final fromJsonResultModel = ResultModel.fromJson(resultJson);
 
         state = ResultModelFactory.create(
-          tp: fromJsonResultModel.tp,
-          perfect: fromJsonResultModel.perfect,
-          good: fromJsonResultModel.good,
-          bad: fromJsonResultModel.bad,
-          miss: fromJsonResultModel.miss
-        );
+            tp: fromJsonResultModel.tp,
+            perfect: fromJsonResultModel.perfect,
+            good: fromJsonResultModel.good,
+            bad: fromJsonResultModel.bad,
+            miss: fromJsonResultModel.miss);
 
         calculate();
       });

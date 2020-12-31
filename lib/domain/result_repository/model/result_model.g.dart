@@ -14,7 +14,7 @@ _$_Result _$_$_ResultFromJson(Map<String, dynamic> json) {
     good: json['GOOD'] as int,
     bad: json['BAD'] as int,
     miss: json['MISS'] as int,
-    blackPerfect: json['blackPerfect'] as int ?? 0,
+    blackPerfect: json['blackPerfect'] as int,
   );
 }
 

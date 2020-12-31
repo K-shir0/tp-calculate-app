@@ -9,12 +9,12 @@ import 'package:tp_calculate/domain/result_repository/model/result_model.dart';
 import 'package:tp_calculate/domain/result_repository/model/result_model_factory.dart';
 import 'package:tp_calculate/providers/result_provider.dart';
 
-final blackPerfectTextController = new TextEditingController();
-final tpTextController = new TextEditingController();
-final perfectTextController = new TextEditingController();
-final goodTextController = new TextEditingController();
-final badTextController = new TextEditingController();
-final missTextController = new TextEditingController();
+// final blackPerfectTextController = new TextEditingController();
+// final tpTextController = new TextEditingController();
+// final perfectTextController = new TextEditingController();
+// final goodTextController = new TextEditingController();
+// final badTextController = new TextEditingController();
+// final missTextController = new TextEditingController();
 
 class HomeScreen extends HookWidget {
   @override
@@ -52,18 +52,18 @@ class HomeScreen extends HookWidget {
                                     print("画像をセット開始");
                                     print(result.state);
 
-                                    tpTextController.text =
-                                        result.state.tp.toString();
-                                    perfectTextController.text =
-                                        result.state.perfect.toString();
-                                    goodTextController.text =
-                                        result.state.good.toString();
-                                    badTextController.text =
-                                        result.state.bad.toString();
-                                    missTextController.text =
-                                        result.state.miss.toString();
-                                    blackPerfectTextController.text =
-                                        result.state.blackPerfect.toString();
+                                    // tpTextController.text =
+                                    //     result.state.tp.toString();
+                                    // perfectTextController.text =
+                                    //     result.state.perfect.toString();
+                                    // goodTextController.text =
+                                    //     result.state.good.toString();
+                                    // badTextController.text =
+                                    //     result.state.bad.toString();
+                                    // missTextController.text =
+                                    //     result.state.miss.toString();
+                                    // blackPerfectTextController.text =
+                                    //     result.state.blackPerfect.toString();
 
                                     Scaffold.of(context).showSnackBar(SnackBar(
                                       // 画像の読み込みに成功した時のメッセージ
@@ -125,32 +125,32 @@ class CalculateForm extends HookWidget {
     final result = useProvider(resultNotifierProvider);
     ResultModel resultState = result.state;
 
-    final setTextField = () {
-      print("テキストフィールドセット");
-
-      resultState = resultState.copyWith(
-        tp: double.parse(
-            tpTextController.text == "" ? "0" : tpTextController.text),
-        perfect: int.parse(perfectTextController.text == ""
-            ? "0"
-            : perfectTextController.text),
-        good: int.parse(
-            goodTextController.text == "" ? "0" : perfectTextController.text),
-        bad: int.parse(
-            badTextController.text == "" ? "0" : perfectTextController.text),
-        miss: int.parse(
-            missTextController.text == "" ? "0" : perfectTextController.text),
-      );
-    };
-
-    final onClear = () {
-      tpTextController.text = "";
-      perfectTextController.text = "";
-      goodTextController.text = "";
-      badTextController.text = "";
-      missTextController.text = "";
-      blackPerfectTextController.text = "";
-    };
+    // final setTextField = () {
+    //   print("テキストフィールドセット");
+    //
+    //   resultState = resultState.copyWith(
+    //     tp: double.parse(
+    //         tpTextController.text == "" ? "0" : tpTextController.text),
+    //     perfect: int.parse(perfectTextController.text == ""
+    //         ? "0"
+    //         : perfectTextController.text),
+    //     good: int.parse(
+    //         goodTextController.text == "" ? "0" : perfectTextController.text),
+    //     bad: int.parse(
+    //         badTextController.text == "" ? "0" : perfectTextController.text),
+    //     miss: int.parse(
+    //         missTextController.text == "" ? "0" : perfectTextController.text),
+    //   );
+    // };
+    //
+    // final onClear = () {
+    //   tpTextController.text = "";
+    //   perfectTextController.text = "";
+    //   goodTextController.text = "";
+    //   badTextController.text = "";
+    //   missTextController.text = "";
+    //   blackPerfectTextController.text = "";
+    // };
 
     final _formKey = GlobalKey<FormState>();
 
@@ -167,7 +167,11 @@ class CalculateForm extends HookWidget {
                       const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
                   child: CalculateTextField(
                     label: "TP値",
-                    controller: tpTextController,
+                    // controller: tpTextController,
+                    onSaved: (value) {
+                      result.setTp(double.parse(value));
+                    },
+                    initialValue: useProvider(resultNotifierProvider.state).tp?.toString() ?? "",
                   ),
                 ),
               ),
@@ -187,7 +191,11 @@ class CalculateForm extends HookWidget {
                     label: "PERFECT",
                     labelColor: Palette.perfect,
                     inputFormatter: valueTextFormatter,
-                    controller: perfectTextController,
+                    // controller: perfectTextController,
+                    onSaved: (value) {
+                      result.setPerfect(int.parse(value));
+                    },
+                    initialValue: useProvider(resultNotifierProvider.state).perfect?.toString() ?? "",
                   ),
                 ),
               ),
@@ -199,7 +207,11 @@ class CalculateForm extends HookWidget {
                     label: "GOOD",
                     labelColor: Palette.good,
                     inputFormatter: valueTextFormatter,
-                    controller: goodTextController,
+                    // controller: goodTextController,
+                    onSaved: (value) {
+                      result.setGood(int.parse(value));
+                    },
+                    initialValue: useProvider(resultNotifierProvider.state).good?.toString() ?? "",
                   ),
                 ),
               ),
@@ -211,7 +223,11 @@ class CalculateForm extends HookWidget {
                     label: "BAD",
                     labelColor: Palette.bad,
                     inputFormatter: valueTextFormatter,
-                    controller: badTextController,
+                    // controller: badTextController,
+                    onSaved: (value) {
+                      result.setBad(int.parse(value));
+                    },
+                    initialValue: useProvider(resultNotifierProvider.state).bad?.toString() ?? "",
                   ),
                 ),
               ),
@@ -222,7 +238,11 @@ class CalculateForm extends HookWidget {
                   child: CalculateTextField(
                     label: "MISS",
                     inputFormatter: valueTextFormatter,
-                    controller: missTextController,
+                    // controller: missTextController,
+                    onSaved: (value) {
+                      result.setMiss(int.parse(value));
+                    },
+                    initialValue: useProvider(resultNotifierProvider.state).miss?.toString() ?? "",
                   ),
                 ),
               ),
@@ -244,14 +264,15 @@ class CalculateForm extends HookWidget {
                     textColor: Palette.white,
                     color: Palette.primary,
                     onPressed: () {
-                      setTextField();
+                      // setTextField();
+                      _formKey.currentState.save();
 
                       result.calculate();
 
-                      print(resultState);
+                      print(result.state);
 
-                      blackPerfectTextController.text =
-                          resultState.blackPerfect.toString();
+                      // blackPerfectTextController.text =
+                      //     resultState.blackPerfect.toString();
 
                       resultState = ResultModelFactory.create();
                     },
@@ -269,7 +290,8 @@ class CalculateForm extends HookWidget {
                         side: BorderSide(color: Palette.black)),
                     color: Palette.white,
                     onPressed: () {
-                      onClear();
+                      // _formKey.currentState.reset();
+                      result.reset();
                     },
                   ),
                 ),
@@ -298,8 +320,9 @@ class CalculateForm extends HookWidget {
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: CalculateTextField(
                     label: "PERFECT(Black)",
-                    controller: blackPerfectTextController,
+                    // controller: blackPerfectTextController,
                     isEnabled: false,
+                    initialValue: useProvider(resultNotifierProvider.state).blackPerfect?.toString() ?? "",
                   ),
                 ),
               ),
@@ -323,6 +346,8 @@ class CalculateTextField extends StatelessWidget {
   final Color labelColor;
   final bool isEnabled;
   final TextEditingController controller;
+  final Function(String) onSaved;
+  final String initialValue;
 
   const CalculateTextField(
       {Key key,
@@ -330,7 +355,8 @@ class CalculateTextField extends StatelessWidget {
       this.inputFormatter,
       this.labelColor,
       this.isEnabled,
-      this.controller})
+      this.controller,
+      this.onSaved, this.initialValue})
       : super(key: key);
 
   @override
@@ -346,15 +372,18 @@ class CalculateTextField extends StatelessWidget {
           ),
         ),
         TextFormField(
-            decoration: InputDecoration(
-              isDense: true,
-              contentPadding: EdgeInsets.all(8),
-              border: OutlineInputBorder(),
-            ),
-            enabled: isEnabled,
-            keyboardType: TextInputType.number,
-            controller: controller,
-            inputFormatters: inputFormatter),
+          decoration: InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.all(8),
+            border: OutlineInputBorder(),
+          ),
+          enabled: isEnabled,
+          keyboardType: TextInputType.number,
+          controller: controller,
+          inputFormatters: inputFormatter,
+          onSaved: onSaved,
+          initialValue: initialValue,
+        ),
       ],
     );
   }

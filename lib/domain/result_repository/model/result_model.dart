@@ -8,22 +8,22 @@ abstract class ResultModel with _$ResultModel {
   const factory ResultModel({
     @nullable
     String id,
-    @Default(0)
+    @nullable
     @JsonKey(name: "TP")
     double tp,
-    @Default(0)
+    @nullable
     @JsonKey(name: "PERFECT")
     int perfect,
-    @Default(0)
+    @nullable
     @JsonKey(name: "GOOD")
     int good,
-    @Default(0)
+    @nullable
     @JsonKey(name: "BAD")
     int bad,
-    @Default(0)
+    @nullable
     @JsonKey(name: "MISS")
     int miss,
-    @Default(0)
+    @nullable
     int blackPerfect,
   }) = _Result;
 

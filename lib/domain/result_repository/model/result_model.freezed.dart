@@ -19,12 +19,12 @@ class _$ResultModelTearOff {
 // ignore: unused_element
   _Result call(
       {@nullable String id,
-      @JsonKey(name: "TP") double tp = 0,
-      @JsonKey(name: "PERFECT") int perfect = 0,
-      @JsonKey(name: "GOOD") int good = 0,
-      @JsonKey(name: "BAD") int bad = 0,
-      @JsonKey(name: "MISS") int miss = 0,
-      int blackPerfect = 0}) {
+      @nullable @JsonKey(name: "TP") double tp,
+      @nullable @JsonKey(name: "PERFECT") int perfect,
+      @nullable @JsonKey(name: "GOOD") int good,
+      @nullable @JsonKey(name: "BAD") int bad,
+      @nullable @JsonKey(name: "MISS") int miss,
+      @nullable int blackPerfect}) {
     return _Result(
       id: id,
       tp: tp,
@@ -50,16 +50,22 @@ const $ResultModel = _$ResultModelTearOff();
 mixin _$ResultModel {
   @nullable
   String get id;
+  @nullable
   @JsonKey(name: "TP")
   double get tp;
+  @nullable
   @JsonKey(name: "PERFECT")
   int get perfect;
+  @nullable
   @JsonKey(name: "GOOD")
   int get good;
+  @nullable
   @JsonKey(name: "BAD")
   int get bad;
+  @nullable
   @JsonKey(name: "MISS")
   int get miss;
+  @nullable
   int get blackPerfect;
 
   Map<String, dynamic> toJson();
@@ -73,12 +79,12 @@ abstract class $ResultModelCopyWith<$Res> {
       _$ResultModelCopyWithImpl<$Res>;
   $Res call(
       {@nullable String id,
-      @JsonKey(name: "TP") double tp,
-      @JsonKey(name: "PERFECT") int perfect,
-      @JsonKey(name: "GOOD") int good,
-      @JsonKey(name: "BAD") int bad,
-      @JsonKey(name: "MISS") int miss,
-      int blackPerfect});
+      @nullable @JsonKey(name: "TP") double tp,
+      @nullable @JsonKey(name: "PERFECT") int perfect,
+      @nullable @JsonKey(name: "GOOD") int good,
+      @nullable @JsonKey(name: "BAD") int bad,
+      @nullable @JsonKey(name: "MISS") int miss,
+      @nullable int blackPerfect});
 }
 
 /// @nodoc
@@ -119,12 +125,12 @@ abstract class _$ResultCopyWith<$Res> implements $ResultModelCopyWith<$Res> {
   @override
   $Res call(
       {@nullable String id,
-      @JsonKey(name: "TP") double tp,
-      @JsonKey(name: "PERFECT") int perfect,
-      @JsonKey(name: "GOOD") int good,
-      @JsonKey(name: "BAD") int bad,
-      @JsonKey(name: "MISS") int miss,
-      int blackPerfect});
+      @nullable @JsonKey(name: "TP") double tp,
+      @nullable @JsonKey(name: "PERFECT") int perfect,
+      @nullable @JsonKey(name: "GOOD") int good,
+      @nullable @JsonKey(name: "BAD") int bad,
+      @nullable @JsonKey(name: "MISS") int miss,
+      @nullable int blackPerfect});
 }
 
 /// @nodoc
@@ -165,18 +171,12 @@ class __$ResultCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
 class _$_Result implements _Result {
   const _$_Result(
       {@nullable this.id,
-      @JsonKey(name: "TP") this.tp = 0,
-      @JsonKey(name: "PERFECT") this.perfect = 0,
-      @JsonKey(name: "GOOD") this.good = 0,
-      @JsonKey(name: "BAD") this.bad = 0,
-      @JsonKey(name: "MISS") this.miss = 0,
-      this.blackPerfect = 0})
-      : assert(tp != null),
-        assert(perfect != null),
-        assert(good != null),
-        assert(bad != null),
-        assert(miss != null),
-        assert(blackPerfect != null);
+      @nullable @JsonKey(name: "TP") this.tp,
+      @nullable @JsonKey(name: "PERFECT") this.perfect,
+      @nullable @JsonKey(name: "GOOD") this.good,
+      @nullable @JsonKey(name: "BAD") this.bad,
+      @nullable @JsonKey(name: "MISS") this.miss,
+      @nullable this.blackPerfect});
 
   factory _$_Result.fromJson(Map<String, dynamic> json) =>
       _$_$_ResultFromJson(json);
@@ -185,22 +185,27 @@ class _$_Result implements _Result {
   @nullable
   final String id;
   @override
+  @nullable
   @JsonKey(name: "TP")
   final double tp;
   @override
+  @nullable
   @JsonKey(name: "PERFECT")
   final int perfect;
   @override
+  @nullable
   @JsonKey(name: "GOOD")
   final int good;
   @override
+  @nullable
   @JsonKey(name: "BAD")
   final int bad;
   @override
+  @nullable
   @JsonKey(name: "MISS")
   final int miss;
-  @JsonKey(defaultValue: 0)
   @override
+  @nullable
   final int blackPerfect;
 
   @override
@@ -254,12 +259,12 @@ class _$_Result implements _Result {
 abstract class _Result implements ResultModel {
   const factory _Result(
       {@nullable String id,
-      @JsonKey(name: "TP") double tp,
-      @JsonKey(name: "PERFECT") int perfect,
-      @JsonKey(name: "GOOD") int good,
-      @JsonKey(name: "BAD") int bad,
-      @JsonKey(name: "MISS") int miss,
-      int blackPerfect}) = _$_Result;
+      @nullable @JsonKey(name: "TP") double tp,
+      @nullable @JsonKey(name: "PERFECT") int perfect,
+      @nullable @JsonKey(name: "GOOD") int good,
+      @nullable @JsonKey(name: "BAD") int bad,
+      @nullable @JsonKey(name: "MISS") int miss,
+      @nullable int blackPerfect}) = _$_Result;
 
   factory _Result.fromJson(Map<String, dynamic> json) = _$_Result.fromJson;
 
@@ -267,21 +272,27 @@ abstract class _Result implements ResultModel {
   @nullable
   String get id;
   @override
+  @nullable
   @JsonKey(name: "TP")
   double get tp;
   @override
+  @nullable
   @JsonKey(name: "PERFECT")
   int get perfect;
   @override
+  @nullable
   @JsonKey(name: "GOOD")
   int get good;
   @override
+  @nullable
   @JsonKey(name: "BAD")
   int get bad;
   @override
+  @nullable
   @JsonKey(name: "MISS")
   int get miss;
   @override
+  @nullable
   int get blackPerfect;
   @override
   _$ResultCopyWith<_Result> get copyWith;
