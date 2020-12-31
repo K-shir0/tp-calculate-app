@@ -112,7 +112,7 @@ class HomeScreen extends HookWidget {
   }
 }
 
-// Molecules
+// Organisms
 // ・有効性の確認
 // ・リクエスト等
 class CalculateForm extends HookWidget {
@@ -152,166 +152,171 @@ class CalculateForm extends HookWidget {
       blackPerfectTextController.text = "";
     };
 
-    return ListView(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                child: CalculateTextField(
-                  label: "TP値",
-                  controller: tpTextController,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                child: CalculateTextField(
-                  label: "PERFECT",
-                  labelColor: Palette.perfect,
-                  inputFormatter: valueTextFormatter,
-                  controller: perfectTextController,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                child: CalculateTextField(
-                  label: "GOOD",
-                  labelColor: Palette.good,
-                  inputFormatter: valueTextFormatter,
-                  controller: goodTextController,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                child: CalculateTextField(
-                  label: "BAD",
-                  labelColor: Palette.bad,
-                  inputFormatter: valueTextFormatter,
-                  controller: badTextController,
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
-                child: CalculateTextField(
-                  label: "MISS",
-                  inputFormatter: valueTextFormatter,
-                  controller: missTextController,
-                ),
-              ),
-            ),
-          ],
-        ),
+    final _formKey = GlobalKey<FormState>();
 
-        // ボタン群
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  child: Text("計算"),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4.0),
+    return Form(
+      key: _formKey,
+      child: ListView(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "TP値",
+                    controller: tpTextController,
                   ),
-                  textColor: Palette.white,
-                  color: Palette.primary,
-                  onPressed: () {
-                    setTextField();
-
-                    result.calculate();
-
-                    print(resultState);
-
-                    blackPerfectTextController.text =
-                        resultState.blackPerfect.toString();
-
-                    resultState = ResultModelFactory.create();
-                  },
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RaisedButton(
-                  child: Text("リセット"),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      side: BorderSide(color: Palette.black)),
-                  color: Palette.white,
-                  onPressed: () {
-                    onClear();
-                  },
-                ),
-              ),
-            ),
-
-            // ボタン右のスペース
-            Expanded(
-              flex: 1,
-              child: Container(),
-            ),
-          ],
-        ),
-
-        // 線
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Divider(
-            color: Colors.black,
+              Expanded(
+                flex: 2,
+                child: Container(),
+              )
+            ],
           ),
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: CalculateTextField(
-                  label: "PERFECT(Black)",
-                  controller: blackPerfectTextController,
-                  isEnabled: false,
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "PERFECT",
+                    labelColor: Palette.perfect,
+                    inputFormatter: valueTextFormatter,
+                    controller: perfectTextController,
+                  ),
                 ),
               ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "GOOD",
+                    labelColor: Palette.good,
+                    inputFormatter: valueTextFormatter,
+                    controller: goodTextController,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "BAD",
+                    labelColor: Palette.bad,
+                    inputFormatter: valueTextFormatter,
+                    controller: badTextController,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                  child: CalculateTextField(
+                    label: "MISS",
+                    inputFormatter: valueTextFormatter,
+                    controller: missTextController,
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          // ボタン群
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    child: Text("計算"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    textColor: Palette.white,
+                    color: Palette.primary,
+                    onPressed: () {
+                      setTextField();
+
+                      result.calculate();
+
+                      print(resultState);
+
+                      blackPerfectTextController.text =
+                          resultState.blackPerfect.toString();
+
+                      resultState = ResultModelFactory.create();
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RaisedButton(
+                    child: Text("リセット"),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        side: BorderSide(color: Palette.black)),
+                    color: Palette.white,
+                    onPressed: () {
+                      onClear();
+                    },
+                  ),
+                ),
+              ),
+
+              // ボタン右のスペース
+              Expanded(
+                flex: 1,
+                child: Container(),
+              ),
+            ],
+          ),
+
+          // 線
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider(
+              color: Colors.black,
             ),
-            // 右の空白
-            Expanded(
-              flex: 2,
-              child: Container(),
-            )
-          ],
-        ),
-      ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: CalculateTextField(
+                    label: "PERFECT(Black)",
+                    controller: blackPerfectTextController,
+                    isEnabled: false,
+                  ),
+                ),
+              ),
+              // 右の空白
+              Expanded(
+                flex: 2,
+                child: Container(),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
 
-// Atoms
+// Molecules
 class CalculateTextField extends StatelessWidget {
   final String label;
   final List<TextInputFormatter> inputFormatter;
@@ -340,7 +345,7 @@ class CalculateTextField extends StatelessWidget {
             style: TextStyle(color: labelColor),
           ),
         ),
-        TextField(
+        TextFormField(
             decoration: InputDecoration(
               isDense: true,
               contentPadding: EdgeInsets.all(8),
