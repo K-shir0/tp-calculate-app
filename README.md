@@ -1,4 +1,5 @@
 # tp_calculate
+[![Codemagic build status](https://api.codemagic.io/apps/5fe7936515bfd1ef46db6087/5fe7936515bfd1ef46db6086/status_badge.svg)](https://codemagic.io/apps/5fe7936515bfd1ef46db6087/5fe7936515bfd1ef46db6086/latest_build)
 
 A new Flutter project.
 
