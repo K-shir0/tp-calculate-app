@@ -32,7 +32,7 @@ class CalculateForm extends HookWidget {
                   child: CalculateTextFormField(
                     label: "TP値",
                     onSaved: (value) {
-                      result.setTp(double.parse(value));
+                      result.setTp(double.tryParse(value ?? '') ?? 0.0);
                     },
                     initialValue: useProvider(resultNotifierProvider.state)
                         .tp
@@ -58,7 +58,7 @@ class CalculateForm extends HookWidget {
                     labelColor: Palette.perfect,
                     inputFormatter: valueTextFormatter,
                     onSaved: (value) {
-                      result.setPerfect(int.parse(value));
+                      result.setPerfect(int.tryParse(value ?? '') ?? 0);
                     },
                     initialValue: useProvider(resultNotifierProvider.state)
                         .perfect
@@ -76,7 +76,7 @@ class CalculateForm extends HookWidget {
                     labelColor: Palette.good,
                     inputFormatter: valueTextFormatter,
                     onSaved: (value) {
-                      result.setGood(int.parse(value));
+                      result.setGood(int.tryParse(value ?? '') ?? 0);
                     },
                     initialValue: useProvider(resultNotifierProvider.state)
                         .good
@@ -94,7 +94,7 @@ class CalculateForm extends HookWidget {
                     labelColor: Palette.bad,
                     inputFormatter: valueTextFormatter,
                     onSaved: (value) {
-                      result.setBad(int.parse(value));
+                      result.setBad(int.tryParse(value ?? '') ?? 0);
                     },
                     initialValue: useProvider(resultNotifierProvider.state)
                         .bad
@@ -111,7 +111,7 @@ class CalculateForm extends HookWidget {
                     label: "MISS",
                     inputFormatter: valueTextFormatter,
                     onSaved: (value) {
-                      result.setMiss(int.parse(value));
+                      result.setMiss(int.tryParse(value ?? '') ?? 0);
                     },
                     initialValue: useProvider(resultNotifierProvider.state)
                         .miss
